@@ -1,0 +1,42 @@
+{% include 'cabecalho.html' %}
+
+
+<h1>Lista de Disciplinas</h1>
+
+<a href="/disciplina/form" class="btn btn-primary mb-3">Nova Disciplina</a>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Carga Horária</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for disciplina in lista %}
+        <tr>
+            <td>{{ disciplina.id }}</td>
+            <td>{{ disciplina.nome }}</td>
+            <td>{{ disciplina.carga_horaria }}</td>
+            <td>
+                <a href="/disciplina/editar/{{ disciplina.id }}" class="btn btn-success">Alterar</a>
+                <a
+                    href="/disciplina/remove/{{ aluno.id }}" 
+                    onclick="return confirm('Tem certeza que deseja remover este registro?');"
+                    class="btn btn-danger">Remover
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% include 'rodape.html' %}
+
+

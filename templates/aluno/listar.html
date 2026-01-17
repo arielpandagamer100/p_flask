@@ -1,0 +1,42 @@
+{% include 'cabecalho.html' %}
+
+
+<h1>Lista de Alunos</h1>
+
+<a href="/aluno/form" class="btn btn-primary mb-3">Novo Aluno</a>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for aluno in lista %}
+        <tr>
+            <td>{{ aluno.id }}</td>
+            <td>{{ aluno.matricula }}</td>
+            <td>{{ aluno.nome }}</td>
+            <td>
+                <a href="/aluno/editar/{{ aluno.id }}" class="btn btn-success">Alterar</a>
+                <a
+                    href="/aluno/remove/{{ aluno.id }}" 
+                    onclick="return confirm('Tem certeza que deseja remover este registro?');"
+                    class="btn btn-danger">Remover
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% include 'rodape.html' %}
+
+

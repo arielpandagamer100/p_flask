@@ -1,0 +1,43 @@
+{% include 'cabecalho.html' %}
+
+
+<h1>Lista de Professor</h1>
+
+<a href="/professor/form" class="btn btn-primary mb-3">Novo Professor</a>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Disciplina</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for professor in lista %}
+        <tr>
+            <td>{{ professor.id }}</td>
+            <td>{{ professor.nome }}</td>
+            <td>{{ professor.cpf }}</td>
+            <td>{{ professor.disciplina }}</td>
+            <td>
+                <a href="/professor/editar/{{ professor.id }}" class="btn btn-success">Alterar</a>
+                <a
+                    href="/professor/remove/{{ professor.id }}" 
+                    onclick="return confirm('Tem certeza que deseja remover este registro?');"
+                    class="btn btn-danger">Remover
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+{% include 'rodape.html' %}
+
+
